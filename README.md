@@ -1,6 +1,8 @@
 jQuery Keyboard Navigation plugin
 =================================
 
+[**View Demo**](http://firedev.com/jquery.keynav/)
+
 This plugin allows you to navigate a set of links layed out in a matrix from keyboard:
 
     [_ITEM_] [ item ] [ item ] [ item ]
