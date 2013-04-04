@@ -10,11 +10,15 @@ a {
 
 pre {
 	background: #f0f0f0;
-	padding: 1em;
+	padding: 1em 1em 0;
 }
 code {
 	background: #f0f0f0;
 	padding: 0.5em;
+}
+pre code {
+	background: none;
+	padding: 0;
 }
 
 .control {
