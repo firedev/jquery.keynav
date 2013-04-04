@@ -10,6 +10,10 @@
 			margin: 2em 3em;
 		}
 
+		a {
+			color: #6699ff;
+		}
+
 		.nav_holder {
 			margin: -1em 0 0 -1em;
 			list-style: none;
@@ -20,7 +24,6 @@
 			margin: 1em 0 0 1em;
 		}
 		.nav_holder li a {
-			color: #6699ff;
 			float: left;
 			padding: 0.5em 1em;
 			width: 15em;
@@ -34,43 +37,60 @@
 	</style>
 </head>
 <body>
-<ul class="nav_holder">
+	<p>
+		Keyboard Navigation: <a href="#link" id="enable">Enable</a>
+		<a href="#link" id="disable">Disable</a>
+	</p>
+
+	<ul class="nav_holder">
 	<li>
-		<a class="selected" href="#">Navigation Item Number 1</a>
+		<a href="#link">Navigation Item </a>
 	</li>
 	<li>
-		<a href="#">Navigation Item Number 1</a>
+		<a href="#link">Navigation Item </a>
 	</li>
 	<li>
-		<a href="#">Navigation Item Number 1</a>
+		<a href="#link">Navigation Item </a>
 	</li>
 	<li>
-		<a href="#">Navigation Item Number 1</a>
+		<a href="#link">Navigation Item </a>
 	</li>
 	<li>
-		<a href="#">Navigation Item Number 1</a>
+		<a href="#link">Navigation Item </a>
 	</li>
 	<li>
-		<a href="#">Navigation Item Number 1</a>
+		<a href="#link">Navigation Item </a>
 	</li>
 	<li>
-		<a href="#">Navigation Item Number 1</a>
+		<a href="#link">Navigation Item </a>
 	</li>
 	<li>
-		<a href="#">Navigation Item Number 1</a>
+		<a href="#link">Navigation Item </a>
 	</li>
 	<li>
-		<a href="#">Navigation Item Number 1</a>
+		<a href="#link">Navigation Item </a>
 	</li>
 	<li>
-		<a href="#">Navigation Item Number 1</a>
+		<a href="#link">Navigation Item </a>
 	</li>
 	<li>
-		<a href="#">Navigation Item Number 1</a>
-	</li>
-	<li>
-		<a href="#">Navigation Item Number 1</a>
+		<a href="#link">Navigation Item </a>
 	</li>
 </ul>
+<script>
+	$(function(){
+	  a=$('.nav_holder a').keynav(function() {
+	  		return window.keyNavigationDisabled;
+	  });
+
+	  $('#disable').click(function(){
+	  	window.keyNavigationDisabled=true;
+	  });
+
+	  $('#enable').click(function(){
+		window.keyNavigationDisabled=false;
+	  });
+	});
+</script>
 </body>
 </html>
