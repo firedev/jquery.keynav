@@ -21,32 +21,49 @@ pre code {
 	padding: 0;
 }
 
-.control {
+.navigation {
 	margin: 2em 0 2em;
+}
+
+.navigation a {
+	padding: 0.5em;
 }
 
 .nav_holder {
 	margin: -1em 0 0 -1em;
 	list-style: none;
 	padding: 0;
-
 };
 
 	.nav_holder li {
 		display: inline-block;
 		margin: 1em 0 0 1em;
 	}
+
 	.nav_holder li a {
 		float: left;
 		padding: 0.5em 1em;
 		width: 15em;
 	}
-	.nav_holder li a.selected {
+
+	.selected {
 		background: #69f;
 		color: white;
 		text-decoration: none;
 		border-radius: 4px;
 	}
+
+	.nav_holder li a.selected {
+		background: #36f;
+	}
+
+.download {
+	font-size: 1.5em;
+	margin-top: 2em;
+	padding: 1em 2em;
+	display: inline-block;
+	box-shadow: 0 5px #36f;
+}
 
 .clearfix:after {
 	visibility: hidden;

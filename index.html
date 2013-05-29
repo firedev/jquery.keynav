@@ -11,9 +11,10 @@
 
 	<p>This plugin allows you to navigate a set of links layed out in a matrix from keyboard:</p>
 
-	<p class="control">
-		Keyboard Navigation: <a href="#link" id="enable">Enable</a>
-		<a href="#link" id="disable">Disable</a>
+	<p class="navigation" id="navigation">
+		Keyboard Navigation:
+		<a href="#link" id="enable" class="selected">Enabled</a>
+		<a href="#link" id="disable">Disabled</a>
 	</p>
 
 
@@ -73,19 +74,31 @@
 
 <script>
 	$(function(){
+
+		updateControls = function() {
+			$('#navigation a').removeClass();
+			$((window.keyNavigationDisabled?'#disable':'#enable')).addClass('selected');
+		}
+
 	  a=$('.nav_holder a').keynav(function() {
 	  		return window.keyNavigationDisabled;
 	  });
 
 	  $('#disable').click(function(){
 	  	window.keyNavigationDisabled=true;
+	  	updateControls();
 	  });
 
 	  $('#enable').click(function(){
-		window.keyNavigationDisabled=false;
+			window.keyNavigationDisabled=false;
+			updateControls();
 	  });
+
+
 	});
 </script>
+
+<a class="selected download" href="https://github.com/firedev/jquery.keynav/blob/master/javascript/jquery.keynav.js">Download from GitHub</a>
 
 <a href="https://github.com/firedev/jquery.keynav"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
