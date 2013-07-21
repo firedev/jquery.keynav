@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+	<script src='javascript/jquery-1.9.1.min.js'></script>
+	<script src='javascript/jquery.keynav.js'></script>
+	<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+	<h1 id="jquerykeyboardnavigationplugin">jQuery Keyboard Navigation plugin</h1>
+
+	<p>This plugin allows you to navigate a set of links layed out in a matrix from keyboard:</p>
+
+	<p class="navigation" id="navigation">
+		Keyboard Navigation:
+		<a href="#link" id="enable" class="selected">Enabled</a>
+		<a href="#link" id="disable">Disabled</a>
+	</p>
+
+
+	<ul class="nav_holder clearfix">
+		<li>
+			<a href="#link">Navigation Item</a>
+		</li>
+		<li>
+			<a href="#link">Navigation Item</a>
+		</li>
+		<li>
+			<a href="#link">Navigation Item</a>
+		</li>
+		<li>
+			<a href="#link">Navigation Item</a>
+		</li>
+		<li>
+			<a href="#link">Navigation Item</a>
+		</li>
+		<li>
+			<a href="#link">Navigation Item</a>
+		</li>
+		<li>
+			<a href="#link">Navigation Item</a>
+		</li>
+		<li>
+			<a href="#link">Navigation Item</a>
+		</li>
+		<li>
+			<a href="#link">Navigation Item</a>
+		</li>
+		<li>
+			<a href="#link">Navigation Item</a>
+		</li>
+		<li>
+			<a href="#link">Navigation Item</a>
+		</li>
+	</ul>
+
+	<p>The rows should have the same vertical offset. You can mark one element with <code>.selected</code> class, or the first one will be selected.</p>
+
+	<p>Enter key replaces <code>window.location.href</code> with the current <code>href</code> value.</p>
+
+	<h2 id="usage:">Usage:</h2>
+
+	<pre><code>$('#navigation a').keynav();
+	</code></pre>
+
+	<p>This will enable keyboard navigation for the links in <code>#navigation</code> container. If you need to have some control on the state of plugin you can pass the additional function as a single parameter:</p>
+
+	<pre><code>$('#navigation a').keynav(function(){
+	        return window.keyNavigationDisabled;
+	});
+	</code></pre>
+
+	<p>Note: If the function passed returns <code>true</code> - keyboard navigation stops.</p>
+
+<script>
+	$(function(){
+
+		updateControls = function() {
+			$('#navigation a').removeClass();
+			$((window.keyNavigationDisabled?'#disable':'#enable')).addClass('selected');
+		}
+
+	  a=$('.nav_holder a').keynav(function() {
+	  		return window.keyNavigationDisabled;
+	  });
+
+	  $('#disable').click(function(){
+	  	window.keyNavigationDisabled=true;
+	  	updateControls();
+	  });
+
+	  $('#enable').click(function(){
+			window.keyNavigationDisabled=false;
+			updateControls();
+	  });
+
+
+	});
+</script>
+
+<a class="selected download" href="https://github.com/firedev/jquery.keynav/blob/master/javascript/jquery.keynav.js">Download from GitHub</a>
+
+<a href="https://github.com/firedev/jquery.keynav"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+</body>
+</html>
