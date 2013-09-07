@@ -16,6 +16,7 @@
 ;(function($, window, document, undefined) {
 
 	$.fn.keynav = function(checkNav) {
+		$(document).unbind(".keynav"); //unbind any other keynavs from the document
 		var elements = this;
 		var matrix;
 		var x;
@@ -97,7 +98,7 @@
 		});
 
 
-		$(document).keydown(function(e){
+		$(document).bind("keydown.keynav",function(e){
 			if (checkNav && checkNav()) return;
 			if (e.keyCode == 37) {
 				// left
@@ -116,7 +117,7 @@
 				setCurrent(x+1,y);
 				e.preventDefault();
 			} else if (e.keyCode == 13) {
-				window.location = current.attr('href');
+				current.mouseup(); //perform the mouseup event of the item
 				e.preventDefault();
 			}
 		});
