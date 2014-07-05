@@ -88,6 +88,16 @@
 			y=j;
 		}
 
+        $(document).ready(function() {
+            elements.hover(function(){
+                var hoverElement = $(this);
+                elements.removeClass('selected');
+                hoverElement.addClass('selected');
+                current = hoverElement;
+                update();
+            })
+        });
+
 		$(window).bind("resize", function(event) {
 			update();
 		});
