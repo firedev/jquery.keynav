@@ -10,7 +10,7 @@ a {
 
 pre {
 	background: #f0f0f0;
-	padding: 1em 1em 0;
+	padding: 0.5em 1em 0.5em;
 }
 code {
 	background: #f0f0f0;
@@ -78,3 +78,17 @@ pre code {
 * html .clearfix { height: 1%; }
 .clearfix { display: block; }
 /* close commented backslash hack */
+
+.table {
+	border: 1px solid #ccc;
+	width: 100%;
+}
+
+.table th {
+	text-align: left;
+	padding: 5px;
+}
+
+.table td {
+	padding: 5px;
+}
