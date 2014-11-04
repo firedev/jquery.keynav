@@ -54,53 +54,95 @@
 		</li>
 	</ul>
 
-	<p>The rows should have the same vertical offset. You can mark one element with <code>.selected</code> class, or the first one will be selected.</p>
+	<p>The rows should have the same vertical offset. You can mark one element with <code>.selected</code> class, or the first one can be selected automatically.</p>
 
-	<p>Enter key replaces <code>window.location.href</code> with the current <code>href</code> value.</p>
+	<p>Pressing <code>ENTER</code> key navigates to the link in the current window.
 
-	<h2 id="usage:">Usage:</h2>
+	<h2 id="usage:">Basic Usage:</h2>
 
-	<pre><code>$('#navigation a').keynav();
-	</code></pre>
+	<pre><code>$('#navigation a').keynav();</code></pre>
 
-	<p>This will enable keyboard navigation for the links in <code>#navigation</code> container. If you need to have some control on the state of plugin you can pass the additional function as a single parameter:</p>
+	<p>This will enable keyboard navigation for the links in <code>#navigation</code> container.
 
-	<pre><code>$('#navigation a').keynav(function(){
-	        return window.keyNavigationDisabled;
-	});
-	</code></pre>
+	<h2 id="usage:">Advanced Usage:</h2>
 
-	<p>Note: If the function passed returns <code>true</code> - keyboard navigation stops.</p>
+	<pre><code>$('#navigation a').keynav({ autoSelectFirst: false });</code></pre>
 
-<script>
-	$(function(){
+	<p>Please see possible options you can pass below.</p>
 
-		updateControls = function() {
-			$('#navigation a').removeClass();
-			$((window.keyNavigationDisabled?'#disable':'#enable')).addClass('selected');
-		}
+	<h2>Options</h2>
 
-	  a=$('.nav_holder a').keynav(function() {
-	  		return window.keyNavigationDisabled;
-	  });
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Option</th>
+				<th>Default</th>
+				<th>Comment</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>updateResizeInterval</td>
+				<td>500</td>
+				<td>Update the navigation matrix every 500ms when window is resized.</td>
+			</tr>
+			<tr>
+				<td>autoSelectFirst</td>
+				<td>true</td>
+				<td>Automatically select the first element (unless another element has <code>.selected</code> class)</td>
+			</tr>
+		</tbody>
+	</table>
 
-	  $('#disable').click(function(){
-	  	window.keyNavigationDisabled=true;
-	  	updateControls();
-	  });
+	<h2>API</h2>
 
-	  $('#enable').click(function(){
-			window.keyNavigationDisabled=false;
-			updateControls();
-	  });
+	<h3>$('a.links').keynav('update')</h3>
+	<p>Update the keynav matrix manually</p>
 
+	<h3>$('a.links').keynav('destroy')</h3>
+	<p>Destroy the keynav and revert items to original state.</p>
 
-	});
-</script>
+	<hr/>
 
-<a class="selected download" href="https://github.com/firedev/jquery.keynav/blob/master/javascript/jquery.keynav.js">Download from GitHub</a>
+	<a class="selected download" href="https://github.com/firedev/jquery.keynav/blob/master/javascript/jquery.keynav.js">Download from GitHub</a>
 
-<a href="https://github.com/firedev/jquery.keynav"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+	<a href="https://github.com/firedev/jquery.keynav"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+	<script>
+		(function() {
+
+			var keynavEnabled = false;
+			var updateControls = function() {
+				$('#navigation a').removeClass();
+				$(keynavEnabled ? '#enable' : '#disable').addClass('selected');
+			};
+
+			var $navLinks = $('.nav_holder a');
+
+			var initKeynav = function() {
+				$navLinks.keynav();
+				keynavEnabled = true;
+			};
+
+			var destroyKeynav = function() {
+				$navLinks.keynav('destroy');
+				keynavEnabled = false;
+			};
+
+			$('#disable').click(function() {
+				destroyKeynav();
+				updateControls();
+			});
+
+			$('#enable').click(function() {
+				initKeynav();
+				updateControls();
+			});
+
+			initKeynav();
+
+		})();
+	</script>
 
 </body>
 </html>
